@@ -4,27 +4,24 @@ namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Http\Client\Response;
 use Illuminate\Queue\SerializesModels;
 
 class CurrencyUpdatedEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    private $res = [];
+    private array $response;
 
     /**
      * Create a new event instance.
      * CurrencyUpdatedEvent constructor.
-     * @param array $res
+     * @param array $responseArray
      */
-    public function __construct(array $res)
+    public function __construct(array $responseArray)
     {
-        $this->res = $res;
+        $this->response = $responseArray;
     }
 
     /**
@@ -45,7 +42,7 @@ class CurrencyUpdatedEvent implements ShouldBroadcast
     public function broadcastWith()
     {
         return [
-            'message' => $this->res
+            'message' => $this->response
         ];
     }
 

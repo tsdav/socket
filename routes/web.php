@@ -16,10 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('currency-update', function () {
-    $res = \Illuminate\Support\Facades\Http::get('https://api.monobank.ua/bank/currency');
-    dd(json_decode($res->body(), true));
-    event(new \App\Events\CurrencyUpdatedEvent());
-
-    return null;
-});

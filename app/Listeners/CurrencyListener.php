@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\CurrencyUpdatedEvent;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class CurrencyListener
 {
@@ -21,10 +19,10 @@ class CurrencyListener
     /**
      * Handle the event.
      *
-     * @param  \App\Events\CurrencyUpdatedEvent  $event
+     * @param CurrencyUpdatedEvent $event
      * @return void
      */
-    public function handle(CurrencyUpdatedEvent $event)
+    public function handle(CurrencyUpdatedEvent $event): void
     {
         //
     }
